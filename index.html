@@ -17,6 +17,14 @@
       background: radial-gradient(circle at center, #ffecd2 0%, #fcb69f 100%);
     }
 
+    /* Overlay invisible para desbloquear audio */
+    #unlockAudio {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: transparent;
+    }
+
     /* Animaciones */
     @keyframes fall {
       0% { transform: translateY(-120px) rotate(0deg); }
@@ -203,6 +211,9 @@
 
 <body>
 
+  <!-- Overlay invisible para desbloquear audio -->
+  <div id="unlockAudio"></div>
+
   <!-- 🎊 Confeti -->
   <div class="confetti"></div>
 
@@ -217,15 +228,13 @@
     <source src="Martin_Garrix-Animals.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- Script para desbloquear audio con un toque/clic -->
   <script>
-    window.addEventListener("load", () => {
+    document.getElementById("unlockAudio").addEventListener("click", () => {
       const music = document.getElementById("bg-music");
-
-      // Desmutear después de iniciar (truco para GitHub Pages)
-      setTimeout(() => {
-        music.muted = false;
-        music.play().catch(() => {});
-      }, 500);
+      music.muted = false;
+      music.play().catch(() => {});
+      document.getElementById("unlockAudio").style.display = "none";
     });
   </script>
 
@@ -282,7 +291,7 @@
 
   <!-- SCRIPT DEL CONTADOR -->
   <script>
-    const birthdayDate = new Date(2025, 11, 30, 0, 0, 0);
+    const birthdayDate = new Date(2025, 11, 27, 23, 46, 0);
 
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
