@@ -212,15 +212,20 @@
   <!-- 🎈 Globos -->
   <div class="balloons"></div>
 
-  <!-- 🎵 Música automática -->
-  <audio id="bg-music" autoplay loop>
+  <!-- 🎵 Música automática (muted para permitir autoplay) -->
+  <audio id="bg-music" autoplay loop muted>
     <source src="Martin_Garrix-Animals.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     window.addEventListener("load", () => {
       const music = document.getElementById("bg-music");
-      music.play().catch(() => {});
+
+      // Desmutear después de iniciar (truco para GitHub Pages)
+      setTimeout(() => {
+        music.muted = false;
+        music.play().catch(() => {});
+      }, 500);
     });
   </script>
 
@@ -231,7 +236,7 @@
       <div class="content">
         <div class="header">
           <div class="title">¡Cuenta regresiva!</div>
-          <div class="subtitle">Para el cumpleaños de la mujer con los ojos mas bonitos</div>
+          <div class="subtitle">Para el cumpleaños de la mujer con los mas ojos bonitos</div>
         </div>
 
         <div id="timer-container">
@@ -359,4 +364,3 @@
 
 </body>
 </html>
-
